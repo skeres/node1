@@ -1,0 +1,22 @@
+
+>>>>>>>>>>>>>>> How project has been configured
+- $ npm init   : initialize node projetc
+- $ npm install nodemon --save-dev  : install package nodemon, witch restart node server automaticaly after any saved file
+nodemon is here only used for test in DEV environment, not in production.
+source : https://techoverflow.net/2017/08/12/using-nodemon-without-a-global-installation/
+- "mynodemon": "./node_modules/nodemon/bin/nodemon.js app.js" : this line was add to package.json. Aims to run mynodemon with npm
+( see command below ) 
+- $ npm install express --save-dev : install express package to create a simple http server
+- create file app.js to be run, then getting a webserver
+- 
+- 
+
+
+>>>>>>>>>>>>>> to lauch server 
+$ npm run mynodemon
+
+
+
+>>>>>>>>>>>>>> troubleshooting
+- after pull from git, nothing happen when trying to run server
+answer : .gitignore exclude node_modules directory. To install needed packages, use command : $ npm install

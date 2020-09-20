@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+ 
+</head>
+<body>
+    <p>Hello !</p>
+      <ul>
+        <li id="1">calculating</li>
+        <li id="2">calculating</li>
+        <li id="3">calculating</li>
+       
+      
+      </ul>
+
+   
+
+<script>
+
+function useData(data) {
+    console.log('in useData')
+    return data.value;
+}
+
+function callUrl(url) {
+    console.log('in callUrl')
+    //return loadJSON(url,useData);
+    return null;
+}
+
+
+
+function test(ligne) {
+    console.log(ligne)
+    let d='http://localhost:3000/known/?ean='+ligne;
+    console.log(d);
+    fetch(d)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        document.getElementById(ligne).innerHTML=JSON.stringify(data.knownOfPhenix)
+    })
+    
+        
+    .catch(error => alert("Erreur : " + error));
+}
+
+
+
+
+
+if (window.fetch) {
+    console.log('test fetch ok')
+} else {
+    console.log('test fetch KO')
+}
+
+//console.log('ici =>'+document.getElementById("1").innerHTML)
+test(1);
+test(2); 
+test(3); 
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+

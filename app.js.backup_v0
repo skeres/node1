@@ -1,0 +1,81 @@
+// app.js
+
+const http = require('http');
+var url = require('url');
+const fs = require('fs').promises;
+
+const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+       
+  };
+
+// Create an instance of the http server to handle HTTP requests
+let app = http.createServer((req, res) => {
+
+    // Set parameter
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    //res.setHeader("Access-Control-Allow-Methods","PUT,GET,DELETE,PATCH")
+    //res.setHeader('Access-Control-Allow-Credentials', true)
+    //res.setHeader('Access-Control-Allow-Headers','X-Requested-With,content-type,Origin,Accept,Authorization')
+    
+    
+    //get param in request url
+    var q = url.parse(req.url, true).query;
+    var ean=q.ean;
+
+    switch (ean) {
+        case "1":
+            console.log(1);
+            res.setHeader("Content-Type", "application/json");
+            res.writeHead(200,headers);
+            res.end(JSON.stringify({value:"ok"}));
+            break
+        case "2":
+            console.log(2);
+            res.setHeader("Content-Type", "application/json");
+            res.writeHead(200, headers);
+            res.end(JSON.stringify({value:"KOOOOO"}));
+            break
+        case "3":
+            console.log(3);
+            res.setHeader("Content-Type", "application/json");
+            res.writeHead(200,headers);
+            res.end(JSON.stringify({value:"ok"}));
+            break
+        default:
+            console.log('default is index.html page');
+            //res.writeHead(404);
+            //res.end(JSON.stringify({error:"bad things happened"}));
+            fs.readFile(__dirname + "/index.html")
+                .then(contents => {
+                    res.setHeader("Content-Type", "text/html");
+                    res.writeHead(200,headers);
+                    res.end(contents);
+                 })
+                 .catch(err => {
+                    res.writeHead(500,headers);
+                    res.end(err);
+                    return;
+                });
+    }
+
+    
+
+
+
+    // Send back a response and end the connection
+    //res.end('Hello World!\n');
+    
+    //var txt = q.toto
+    //console.log('end');
+    //res.writeHead(200);
+    //res.end('{"value":"bad request"}');
+
+
+
+});
+
+// Start the server on port 3000
+app.listen(3000, '127.0.0.1');
+console.log('Node server running on port 3000');

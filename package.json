@@ -1,0 +1,16 @@
+{
+  "name": "node1",
+  "version": "1.0.0",
+  "description": "basic fake web server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mynodemon": "./node_modules/nodemon/bin/nodemon.js app.js --host 0.0.0.0"
+  },
+  "author": "skeres",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
